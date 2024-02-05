@@ -4,6 +4,15 @@
   become: true
 
   tasks:
+  - name: update apt cache
+    apt:
+      update_cache: yes
+
+  - name: install updates
+    apt: 
+      name: "*"
+      state: latest
+
   - name: install packages
     package:
       name:
@@ -42,3 +51,8 @@
         - ncdu
         - samba
         - docker.io
+
+  - name: remove irrelevant packages
+    apt:
+      autoremove: yes
+
