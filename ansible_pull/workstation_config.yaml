@@ -1,0 +1,58 @@
+---
+- hosts: localhost
+  connection: local
+  become: true
+
+  tasks:
+  - name: update apt cache
+    apt:
+      update_cache: yes
+
+  - name: install updates
+    apt: 
+      name: "*"
+      state: latest
+
+  - name: install packages
+    package:
+      name:
+        - chromium-browser
+        - doublecmd-common
+        - openvpn
+        - network-manager-openvpn
+        - network-manager-openvpn-gnome
+        - neofetch
+        - cmatrix
+        - audacious
+        - pwgen
+        - cherrytree
+        - atop
+        - htop
+        - btop
+        - iftop
+        - traceroute
+        - netdiscover
+        - tor
+        - mpv
+        - vim
+        - psmisc
+        - tree
+        - virtualbox
+        - virtualbox-guest-additions-iso
+        - putty
+        - iperf3
+        - powertop
+        - openssh-server
+        - nmap
+        - smartmontools
+        - shellcheck
+        - sysstat
+        - git
+        - ncdu
+        - samba
+        - docker.io
+
+  - name: remove irrelevant packages
+    apt:
+      autoremove: yes
+
