@@ -5,17 +5,17 @@
 
   tasks:
   - name: update apt cache
-    apt:
+    ansible.builtin.apt:
       update_cache: yes
 
   - name: install updates
-    apt: 
+    ansible.builtin.apt: 
       name: "*"
       state: latest
 
   - name: install packages
-    package:
-      name:
+    ansible.builtin.apt:
+      pkg:
         - chromium-browser
         - doublecmd-common
         - openvpn
@@ -53,6 +53,5 @@
         - docker.io
 
   - name: remove irrelevant packages
-    apt:
+    ansible.builtin.apt:
       autoremove: yes
-
