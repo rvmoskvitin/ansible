@@ -4,16 +4,20 @@
   become: true
 
   tasks:
-  - name: update apt cache
+  - name: Set a hostname
+    ansible.builtin.hostname:
+      name: workstation
+
+  - name: Update apt cache
     ansible.builtin.apt:
       update_cache: yes
 
-  - name: install updates
+  - name: Install updates
     ansible.builtin.apt: 
       name: "*"
       state: latest
 
-  - name: install packages
+  - name: Install packages
     ansible.builtin.apt:
       pkg:
         - chromium-browser
@@ -52,6 +56,6 @@
         - samba
         - docker.io
 
-  - name: remove irrelevant packages
+  - name: Remove irrelevant packages
     ansible.builtin.apt:
       autoremove: yes
