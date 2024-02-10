@@ -4,6 +4,18 @@
   become: true
 
   tasks:
+  - name: Make mounting point for first drive
+    ansible.builtin.file:
+      path: /mnt/databox
+      state: directory
+      mode: '0755'
+
+  - name: Make mounting point for second drive
+    ansible.builtin.file:
+      path: /mnt/safebox
+      state: directory
+      mode: '0755'
+
   - name: Set a hostname
     ansible.builtin.hostname:
       name: workstation
