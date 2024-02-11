@@ -1,18 +1,17 @@
 ---
-
 - hosts: all
   become: true
 
   tasks:
-    - name: update apt cache
-      apt:
-        update_cache: yes
+  - name: update apt cache
+    ansible.builtin.apt:
+      update_cache: yes
 
-    - name: install updates
-      apt: 
-        name: "*"
-        state: latest
+  - name: install updates
+    ansible.builtin.apt:
+      name: "*"
+      state: latest
 
-    - name: remove irrelevant packages
-      apt:
-        autoremove: yes
+  - name: remove irrelevant packages
+    ansible.builtin.apt:
+      autoremove: yes
