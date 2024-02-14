@@ -67,7 +67,40 @@
         - ncdu
         - samba
         - docker.io
+        - netplan.io
 
   - name: Remove irrelevant packages
     ansible.builtin.apt:
       autoremove: yes
+
+  - name: Copy .bashrc file
+    ansible.builtin.copy:
+      src: /home/moskvitin/recovery/configs/dotfiles/bashrc
+      dest: /home/moskvitin/.bashrc
+      owner: moskvitin
+      group: moskvitin
+      mode: '0644'
+
+  - name: Copy .vimrc file
+    ansible.builtin.copy:
+      src: /home/moskvitin/recovery/configs/dotfiles/vimrc
+      dest: /home/moskvitin/.vimrc
+      owner: moskvitin
+      group: moskvitin
+      mode: '0644'
+
+  - name: Copy .gitconfig file
+    ansible.builtin.copy:
+      src: /home/moskvitin/recovery/configs/dotfiles/gitconfig
+      dest: /home/moskvitin/.gitconfig
+      owner: moskvitin
+      group: moskvitin
+      mode: '0644'
+
+  - name: Copy smb.conf file
+    ansible.builtin.copy:
+      src: /home/moskvitin/recovery/configs/dotfiles/smb.conf
+      dest: /etc/samba/smb.conf
+      owner: root
+      group: root
+      mode: '0644'
